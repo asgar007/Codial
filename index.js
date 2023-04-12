@@ -1,9 +1,14 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const port = 8001;
 const app = express();
 //use express layout
 const expressLayout = require('express-ejs-layouts');
+const db = require('./config/mongoose')
 app.use(expressLayout);
+
+app.use(express.urlencoded());
+app.use(cookieParser());
 
 //use static folder
 app.use(express.static('./assets'));
