@@ -1,4 +1,14 @@
 
 <link rel="stylesheet" href="/css/user_profile.css">
-    <h1> Asgar / <%= title %>  </h1>
+    <li>
+       <a href="/user/signOut">SignOut</a>
+    </li>
+    <!-- <script> signOut = function(req, res) {
+        res.clearCookie(user.id);
+        return res.redirect('/user/signIn');
+     }
+    </script> -->
 
+    <h1> Asgar / <%= title %>  </h1>
+<p>Name: <%= user.name %> </p>
+<p>Email: <%= user.email %> </p>
