@@ -1,10 +1,12 @@
+// order here is important
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const port = 8001;
 const app = express();
 //use express layout
 const expressLayout = require('express-ejs-layouts');
-const db = require('./config/mongoose')
+const db = require('./config/mongoose');
+
 app.use(expressLayout);
 
 app.use(express.urlencoded());
@@ -21,6 +23,7 @@ app.set('layout extractScripts', true);
 app.use('/', require('./routes'));
 app.set('view engine', 'ejs');
 app.set('views', './views');
+
 
 app.listen(port, function(err){
     if(err){
