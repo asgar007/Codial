@@ -7,6 +7,7 @@ const app = express();
 const expressLayout = require('express-ejs-layouts');
 const db = require('./config/mongoose');
 
+
 app.use(expressLayout);
 
 app.use(express.urlencoded());
