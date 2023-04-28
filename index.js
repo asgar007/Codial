@@ -10,6 +10,8 @@ const db = require('./config/mongoose');
 const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
+const flash = require('connect-flash');
+const customMware = require('./config/middleware')
 
 const MongoStore = require('connect-mongo');
 
@@ -54,6 +56,9 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
+//put flash after session created
+app.use(flash());
+app.use(customMware.setFlash);
 
 // use express router
 app.use('/', require('./routes'));
