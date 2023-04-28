@@ -1,14 +1,19 @@
 
 <link rel="stylesheet" href="/css/user_profile.css">
-    <li>
-       <a href="/user/signOut">SignOut</a>
-    </li>
-    <!-- <script> signOut = function(req, res) {
-        res.clearCookie(user.id);
-        return res.redirect('/user/signIn');
-     }
-    </script> -->
 
     <h1> Asgar / <%= title %>  </h1>
-<p>Name: <%= user.name %> </p>
-<p>Email: <%= user.email %> </p>
+
+
+<% if(user.id == profile_user.id){ %>
+    <!-- if the user matches show the form -->
+    <form action="/user/update/<%= profile_user.id %>" method="post">
+        <input type="text" name="name" placeholder="your Name" value="<%= profile_user.name %>" required>
+        <input type="email" name="email" placeholder="your email" value="<%= profile_user.email %>" required>
+        <input type="submit" value="update">
+    </form>  
+<% }else { %>
+    <!-- else show only the profile info -->
+    <p>Name: <%= profile_user.name %> </p>
+    <p>Email: <%= profile_user.email %> </p>
+
+<% } %>

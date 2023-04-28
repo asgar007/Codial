@@ -1,0 +1,33 @@
+<li>
+    <!-- creating the check for signed in person and only for his post only -->
+    <% if(locals.user && locals.user.id == post.user.id)  {  %>
+        <small>
+            <button><a href="/posts/destroy/<%= post.id %>">Delete Post</a></button>
+        </small>
+    <% } %>
+
+        <%= post.content %>
+    <small> post by
+        <%= post.user.name %>
+    </small>
+
+</li>
+<div class="post-comment">
+    <% if(locals.user) { %>
+        <form action="/comments/create" method="post">
+            <input type="text" name="content" placeholder="type your comments here... " required>
+            <input type="hidden" name="post" value="<%= post._id %>">
+            <input type="submit" value="Add Comment">
+        </form>
+    <% } %>
+    <!-- comment need to be shown even if user is not logged in -->
+    <div class="post-comment-list">
+        <ul id="post-comment-<%= post._id %>">
+            <% for(comment of post.comment) { %>
+                
+                <%- include('_comment') -%>
+
+            <% } %>
+        </ul>
+    </div>
+</div>

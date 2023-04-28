@@ -1,5 +1,24 @@
 <!-- _header is being to differentiate from other files, since header and footer is going to be fixed so made 
 diffrent two files and interolate it in files using LAYOUT feature in ejs -->
 <header>
-    Header
+
+    <ul>
+        <% if(locals.user){ %>
+            <li>User: <%= user.name %> </li>
+            <li>
+                <a href="/user/signOut">sign Out</a>
+            </li>
+
+        <% }else{ %>
+            <li>
+                <a href="/user/signIn">sign In</a>
+            </li>
+            <li>
+                <a href="/user/signUp">sign Up</a>
+            </li>
+
+        <% } %>
+    </ul>
+
+    <h1>HEADER</h1>
 </header>
