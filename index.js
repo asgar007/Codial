@@ -56,6 +56,8 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
+//make the uploads part available to the browser
+app.use('/uploads', express.static(__dirname + '/uploads'));
 //put flash after session created
 app.use(flash());
 app.use(customMware.setFlash);
