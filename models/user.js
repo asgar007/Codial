@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+
 const userSchema = new mongoose.Schema({
     email: {
         type: String,
@@ -17,6 +18,10 @@ const userSchema = new mongoose.Schema({
 }, {
     timestamps: true  // to create 2 more fields createdAt and UpdatedAT
 });
+
+
+
+
 
 const User = mongoose.model('User', userSchema);
 module.exports = User;

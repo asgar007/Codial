@@ -1,8 +1,8 @@
-<li>
+<li id="post-<%= post._id %>">
     <!-- creating the check for signed in person and only for his post only -->
     <% if(locals.user && locals.user.id == post.user.id)  {  %>
         <small>
-            <button><a href="/posts/destroy/<%= post.id %>">Delete Post</a></button>
+            <a class="delete-post-button" href="/posts/destroy/<%= post.id %>">Delete Post</a>
         </small>
     <% } %>
 

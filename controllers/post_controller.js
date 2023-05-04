@@ -1,14 +1,22 @@
 const Post = require('../models/post');
 const Comment = require('../models/comment')
 
-module.exports.create = function(req, res){
+module.exports.create = async function(req, res){
     try{
-       Post.create({
+       let post = await Post.create({
             content: req.body.content,
             // user: req.cookies.user_id
             //if passport is used
             user: req.user._id
         });
+        if(req.xhr){ // checking if ajax req
+            return res.status(200).json({
+                data: {
+                    post: post
+                },
+                message: 'Post is created !'
+            })
+        }
         req.flash('success', 'you created a new post');
         return res.redirect('back');
     }catch(error){
