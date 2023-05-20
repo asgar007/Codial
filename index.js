@@ -10,6 +10,7 @@ const db = require('./config/mongoose');
 const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
+const passportJWT = require('./config/passport-jwt-strategy');
 const flash = require('connect-flash');
 const customMware = require('./config/middleware')
 
@@ -23,6 +24,7 @@ app.use(cookieParser());
 
 //use static folder
 app.use(express.static('./assets'));
+
 
 //extract style and script from sub pages into layout
 app.set('layout extractStyles', true);
