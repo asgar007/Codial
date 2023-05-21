@@ -15,7 +15,7 @@ const flash = require('connect-flash');
 const customMware = require('./config/middleware')
 
 const MongoStore = require('connect-mongo');
-
+const passportGoogle = require('./config/passport-google-oauth2-strategy');
 
 app.use(expressLayout);
 
